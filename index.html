@@ -1,0 +1,47 @@
+<?php 
+require_once('app.php');
+http_response_code(200);
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css?2" rel="stylesheet">
+    <title>Portfolio</title>
+</head>
+    <body data-auth="<?= is_auth() ?>">
+        <div class="curtain"></div>
+        <nav class="navbar">
+            <div class="navbar__primary">
+                <span class="navbar__logo">
+                    <img class="img-logo" src="./icons/letter-p-svgrepo-com.svg">
+                    <span class="navbar__brand">Prosvirnin Igor</span>
+                </span>
+            </div>
+            <div class="navbar__secondary">
+                <a href="/" class="navbar__menu-item">Home</a>
+                <a href="/about" class="navbar__menu-item">About</a>
+                <a href="/projects" class="navbar__menu-item">Projects</a>
+                <a href="/homework" class="navbar__menu-item">Homework</a>
+                <img class="navbar__info-icon" src="./icons/info.svg"></img>
+                <div class="navbar__info">
+                    <form action="/?act=login" method="POST">
+                        <input class="auth-input email" type="email" name="email" placeholder="email">
+                        <input class="auth-input password" type="password" name="password" placeholder="password">
+                        <button class="navbar__info-label" type="submit">Sign in</button>
+                    </form>
+                    <form action="/?act=register" method="POST">
+                        <input class="auth-input email" type="email" name="email" placeholder="email">
+                        <input class="auth-input password" type="password" name="password" placeholder="password">
+                        <button class="navbar__info-label" type="submit">Sign up</button>
+                    </form>
+                    <?= is_auth() ? '<a href="/?act=logout">Logout</a>' : '' ?>
+                </div>
+            </div>
+        </nav>
+        <main></main>
+        <script src="./scripts/app.js?2"></script>
+    </body>
+</html>
